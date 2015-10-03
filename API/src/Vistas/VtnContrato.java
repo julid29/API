@@ -11,11 +11,16 @@ import javax.swing.JButton;
 import Controlador.SistemaCochera;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class VtnContrato extends JFrame {
 	private SistemaCochera controlador;
 	private JButton btnAltaContrato;
 	private JPanel contentPane;
+	private JTextField textField;
+	private JLabel lblCodigoDeCliente;
+	private JTextField textField1;
 
 	/**
 	 * Create the frame.
@@ -35,17 +40,26 @@ public class VtnContrato extends JFrame {
 			setContentPane(contentPane);
 			contentPane.setLayout(null);
 		
-			JButton btnAltaContrato = new JButton("Alta Contrato");
-			btnAltaContrato.addActionListener(new ActionListener() {
+			JButton btnIngresarCliente = new JButton("Ingresar Cliente");
+			btnIngresarCliente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					
+					controlador.IngresarCliente(Integer.parseInt(textField1.getText()));
 				}
 			});
-			btnAltaContrato.setBounds(145, 30, 137, 37);
-			contentPane.add(btnAltaContrato);
+			btnIngresarCliente.setBounds(256, 192, 137, 37);
+			contentPane.add(btnIngresarCliente);
+			
+			JLabel lblCodigoDeCliente = new JLabel("Codigo de Cliente");
+			lblCodigoDeCliente.setBounds(44, 34, 91, 28);
+			contentPane.add(lblCodigoDeCliente);
+			
+			JTextField textField1 = new JTextField();
+			textField1.setBounds(296, 38, 97, 20);
+			contentPane.add(textField1);
+			textField1.setColumns(10);
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
-
 }
