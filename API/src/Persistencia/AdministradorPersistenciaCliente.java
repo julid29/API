@@ -39,5 +39,6 @@ public class AdministradorPersistenciaCliente {
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
+		return false;
 	}
 }
