@@ -44,5 +44,34 @@ public class SistemaCochera {
 		}
 	}
 	
+	public void crearTarjeta(String entidad, int nroTarj, Date vencim) {
+		Tarjeta tarj = buscarTarjeta(entidad,nroTarj);
+		if(tarj == null){
+			tarj = new Tarjeta(entidad,nroTarj,(java.sql.Date) vencim);
+			mediosDePago.add(tarj);
+		}
+	}
+	
+	public void crearCBU(String entidad, int nroCbu) {
+		CBU cbu = buscarCBU(entidad,nroCbu);
+		if(cbu == null)
+			mediosDePago.add(new CBU(entidad,nroCbu));
+	}	
+	
+	public Tarjeta buscarTarjeta(String entidad,int nroTarj)
+	{
+		Tarjeta tarj = new Tarjeta();
+		Tarjeta tarj1= (Tarjeta) tarj.buscarMedioDePago(entidad, nroTarj);
+		mediosDePago.add(tarj1);
+		return tarj1;
+	}
+	
+	public CBU buscarCBU(String entidad,int cbu)
+	{
+		CBU cbu1 = new CBU();
+		CBU cbu2= (CBU) cbu1.buscarMedioDePago(entidad, cbu);
+		mediosDePago.add(cbu2);
+		return cbu2;
+	}
 	
 }
