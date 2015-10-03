@@ -10,30 +10,23 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JButton;
 
+import Controlador.SistemaCochera;
+
 public class VtnCochera extends JFrame {
-
+	private SistemaCochera controlador;
+	private JButton btnCrearCochera;
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VtnCochera frame = new VtnCochera();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public VtnCochera() {
+	public VtnCochera(SistemaCochera cont){
+		controlador = cont;
+		initGUI();
+	}
+	
+	private void initGUI() {
 		setTitle("Cocheras");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

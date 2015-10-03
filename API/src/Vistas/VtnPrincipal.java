@@ -15,19 +15,6 @@ import Controlador.SistemaCochera;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class VtnPrincipal extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu mnCliente;
@@ -79,52 +66,57 @@ public class VtnPrincipal extends JFrame {
 	}
 	
 	private void initGUI() {
-		getContentPane().setLayout(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(0, 0, 631, 414);
-		this.setTitle("Sistema de Cocheras");
+		try{
+			getContentPane().setLayout(null);
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			this.setBounds(0, 0, 631, 414);
+			this.setTitle("Sistema de Cocheras");
 
-		JMenuBar menuBar = new JMenuBar();
-		setJMenuBar(menuBar);
+			JMenuBar menuBar = new JMenuBar();
+			setJMenuBar(menuBar);
 		
-		JMenu mnCliente = new JMenu("Clientes");
-		menuBar.add(mnCliente);
+			JMenu mnCliente = new JMenu("Clientes");
+			menuBar.add(mnCliente);
 		
-		JMenuItem mntmNuevoCliente = new JMenuItem("Nuevo Cliente");
-		mnCliente.add(mntmNuevoCliente);
+			JMenuItem mntmNuevoCliente = new JMenuItem("Nuevo Cliente");
+			mnCliente.add(mntmNuevoCliente);
 		
-		JMenuItem mntmModificarCliente = new JMenuItem("Modificar Cliente");
-		mnCliente.add(mntmModificarCliente);
+			JMenuItem mntmModificarCliente = new JMenuItem("Modificar Cliente");
+			mnCliente.add(mntmModificarCliente);
 		
-		JMenuItem mntmEliminarCliente = new JMenuItem("Eliminar Cliente");
-		mnCliente.add(mntmEliminarCliente);
+			JMenuItem mntmEliminarCliente = new JMenuItem("Eliminar Cliente");
+			mnCliente.add(mntmEliminarCliente);
 		
-		JMenu mnContratos = new JMenu("Contratos");
-		menuBar.add(mnContratos);
+			JMenu mnContratos = new JMenu("Contratos");
+			menuBar.add(mnContratos);
 		
-		JMenuItem mntmNuevoContrato = new JMenuItem("Nuevo Contrato");
-		mnContratos.add(mntmNuevoContrato);
+			JMenuItem mntmNuevoContrato = new JMenuItem("Nuevo Contrato");
+			mnContratos.add(mntmNuevoContrato);
 		
-		JMenu mnMediosDePago = new JMenu("Medios de Pago");
-		menuBar.add(mnMediosDePago);
+			JMenu mnMediosDePago = new JMenu("Medios de Pago");
+			menuBar.add(mnMediosDePago);
 		
-		JMenuItem mntmNuevoMedioDe = new JMenuItem("Nuevo Medio de Pago");
-		mnMediosDePago.add(mntmNuevoMedioDe);
+			JMenuItem mntmNuevoMedioDe = new JMenuItem("Nuevo Medio de Pago");
+			mnMediosDePago.add(mntmNuevoMedioDe);
 		
-		JMenu mnCocheras = new JMenu("Cocheras");
-		menuBar.add(mnCocheras);
+			JMenu mnCocheras = new JMenu("Cocheras");
+			menuBar.add(mnCocheras);
 		
-		JMenuItem mntmCrearCochera = new JMenuItem("Crear Cochera");
-		mntmCrearCochera.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-			}
-		});
-		mnCocheras.add(mntmCrearCochera);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+			JMenuItem mntmCrearCochera = new JMenuItem("Crear Cochera");
+			mntmCrearCochera.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					VtnCochera vCochera = new VtnCochera(controlador);
+					vCochera.setVisible(true);
+				}
+			});
+			mnCocheras.add(mntmCrearCochera);
+			contentPane = new JPanel();
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			contentPane.setLayout(new BorderLayout(0, 0));
+			setContentPane(contentPane);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 }
