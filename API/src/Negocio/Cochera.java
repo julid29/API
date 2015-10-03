@@ -31,4 +31,7 @@ public class Cochera {
 		return numero;
 	}
 	
+	public boolean getEstado(){
+		return estado;
+	}
 }
