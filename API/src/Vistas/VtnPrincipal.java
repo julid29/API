@@ -63,6 +63,12 @@ public class VtnPrincipal extends JFrame {
 		
 		JMenuItem mntmNuevoMedioDe = new JMenuItem("Nuevo Medio de Pago");
 		mnMediosDePago.add(mntmNuevoMedioDe);
+		
+		JMenu mnCocheras = new JMenu("Cocheras");
+		menuBar.add(mnCocheras);
+		
+		JMenuItem mntmCrearCochera = new JMenuItem("Crear Cochera");
+		mnCocheras.add(mntmCrearCochera);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
