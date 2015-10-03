@@ -1,14 +1,15 @@
 package Controlador;
 
-import java.util.Vector;
-
-import Negocio.Cochera;
+import java.util.*;
+import Negocio.*;
 
 public class SistemaCochera {
 	private Vector<Cochera> cocheras;
+	private List<MedioDePago> mediosDePago;
 	
 	public SistemaCochera(){
 		cocheras = new Vector<Cochera>();
+		mediosDePago = new LinkedList<MedioDePago>();
 	}
 	
 	public String crearCochera(){
@@ -17,4 +18,9 @@ public class SistemaCochera {
 		String info = cochera.getNumero();
 		return info;
 	}
+	
+	
+	
+	
+	
 }
