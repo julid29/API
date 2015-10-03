@@ -23,5 +23,9 @@ public class Cochera {
 		}
 		return piso;
 	}
+
+	public String getNumero() {
+		return numero;
+	}
 	
 }
