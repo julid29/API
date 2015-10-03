@@ -13,6 +13,10 @@ public class Cliente {
 	
 	private static int cod;
 	
+	public Cliente(){
+		
+	}
+	
 	public Cliente(String dni,String dom,String nom,String tel,String mail){
 		this.dni = dni;
 		Medios = new Vector<MedioDePago>();

@@ -2,7 +2,10 @@ package Persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import Negocio.Cliente;
 
 public class AdministradorPersistenciaCliente {
 	private static AdministradorPersistenciaCliente pool;
@@ -26,10 +29,13 @@ public class AdministradorPersistenciaCliente {
 			ps.setString(1,String.valueOf(cod));
 			ps.execute();
 			
-			
-		
-		
+			ResultSet result = ps.executeQuery();
+			if(result.wasNull()){
+				PoolConnection.getPoolConnection().closeConnections();
+				return true;
+			}
 			PoolConnection.getPoolConnection().closeConnections();
+			return false;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
