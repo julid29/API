@@ -25,7 +25,7 @@ public class AdministradorPersistenciaCochera {
 		//Generar sentencia SQL
 		try{
 			//Preparar sentencia insert en tabla destino
-			String senten = "INSERT INTO clientes (numero, estado) VALUES (?,?)" ;
+			String senten = "INSERT INTO Cocheras (numero, estado) VALUES (?,?)" ;
 			PreparedStatement ps = null;
 			ps = con.prepareStatement(senten);
 			ps.setString(1,c.getNumero());
