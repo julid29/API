@@ -73,28 +73,25 @@ public class Cliente {
 	}
 	
 	//sets
-	private void setDni(String dni) {
+	public void setDni(String dni) {
 		this.dni = dni;
 	}
-	private void setDomicilio(String domicilio) {
+	public void setDomicilio(String domicilio) {
 		this.domicilio = domicilio;
 	}
-	private void setNombre(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	private void setTelefono(String telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	private void setMail(String mail) {
+	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	private void setMedios(Vector<MedioDePago> medios) {
+	public void setMedios(Vector<MedioDePago> medios) {
 		Medios = medios;
 	}
-	private void setCodigo(int codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
-	}
-	private static void setCod(int cod) {
-		Cliente.cod = cod;
 	}
 }
