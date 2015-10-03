@@ -91,6 +91,12 @@ public class VtnPrincipal extends JFrame {
 			menuBar.add(mnContratos);
 		
 			JMenuItem mntmNuevoContrato = new JMenuItem("Nuevo Contrato");
+			mntmNuevoContrato.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					VtnContrato vContrato = new VtnContrato(controlador);
+					vContrato.setVisible(true);
+				}
+			});
 			mnContratos.add(mntmNuevoContrato);
 		
 			JMenu mnMediosDePago = new JMenu("Medios de Pago");
