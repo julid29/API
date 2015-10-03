@@ -9,6 +9,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+
+import Controlador.SistemaCochera;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -26,7 +29,19 @@ import java.awt.event.ActionEvent;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class VtnPrincipal extends JFrame {
+	private JMenuBar menuBar;
+	private JMenu mnCliente;
+	private JMenuItem mntmNuevoCliente;
+	private JMenuItem mntmModificarCliente;
+	private JMenuItem mntmEliminarCliente;
+	private JMenu mnContratos;
+	private JMenuItem mntmNuevoContrato;
+	private JMenu mnMediosDePago;
+	private JMenuItem mntmNuevoMedioDe;
+	private JMenu mnCocheras;
+	private JMenuItem mntmCrearCochera;
 	
+	private SistemaCochera controlador;
 	{
 		//Set Look & Feel
 		try {
@@ -60,7 +75,7 @@ public class VtnPrincipal extends JFrame {
 	 */
 	public VtnPrincipal(){
 		initGUI();
-		
+		controlador = new SistemaCochera();
 	}
 	
 	private void initGUI() {
