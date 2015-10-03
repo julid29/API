@@ -82,7 +82,6 @@ public class VtnPrincipal extends JFrame {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(0, 0, 631, 414);
-		this.setFont(new java.awt.Font("Calibri",0,10));
 		this.setTitle("Sistema de Cocheras");
 
 		JMenuBar menuBar = new JMenuBar();
