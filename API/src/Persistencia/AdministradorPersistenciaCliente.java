@@ -23,9 +23,10 @@ public class AdministradorPersistenciaCliente {
 			String senten = "Select dni from clientes where dni=?" ;
 			PreparedStatement ps = null;
 			ps = con.prepareStatement(senten);
-			ps.setString(1,String.valueOf(cod);
+			ps.setString(1,String.valueOf(cod));
 			ps.execute();
-		
+			
+			
 		
 		
 			PoolConnection.getPoolConnection().closeConnections();
