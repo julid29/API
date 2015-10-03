@@ -1,5 +1,7 @@
 package Negocio;
 
+import Persistencia.AdminPersistenciaMedioDePago;
+
 public class CBU extends MedioDePago {
 	private int cbu;
 	
@@ -7,6 +9,7 @@ public class CBU extends MedioDePago {
 		super(entidad);
 		this.cbu=cbu;
 		// TODO Auto-generated constructor stub
+		AdminPersistenciaMedioDePago.getInstancia().insertarCBU(this);
 	}
 
 	

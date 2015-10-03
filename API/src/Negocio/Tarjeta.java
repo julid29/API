@@ -2,6 +2,8 @@ package Negocio;
 
 import java.sql.*;
 
+import Persistencia.AdminPersistenciaMedioDePago;
+
 public class Tarjeta extends MedioDePago {
 	private int nroTarj;
 	private Date fecha;
@@ -11,6 +13,7 @@ public class Tarjeta extends MedioDePago {
 		this.nroTarj = nroTarj;
 		this.fecha = fecha;
 		// TODO Auto-generated constructor stub
+		AdminPersistenciaMedioDePago.getInstancia().insertarTarjeta(this);
 	}
 
 	public boolean sosMedioDePago(String entidad, int nroTarj) {
