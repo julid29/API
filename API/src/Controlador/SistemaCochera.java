@@ -11,7 +11,6 @@ public class SistemaCochera {
 		cocheras = new Vector<Cochera>();
 	}
 	
-	
 	public String crearCochera(){
 		Cochera cochera = new Cochera();
 		cocheras.add(cochera);
