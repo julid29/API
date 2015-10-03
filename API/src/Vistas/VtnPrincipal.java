@@ -40,7 +40,7 @@ public class VtnPrincipal extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnCliente = new JMenu("Cliente");
+		JMenu mnCliente = new JMenu("Clientes");
 		menuBar.add(mnCliente);
 		
 		JMenuItem mntmNuevoCliente = new JMenuItem("Nuevo Cliente");
