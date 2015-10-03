@@ -9,7 +9,6 @@ public abstract class MedioDePago {
 	}
 	
 	
-	
 	public String getEntidadBancaria() {
 		return entidad;
 	}
@@ -17,6 +16,8 @@ public abstract class MedioDePago {
 	public void setEntidadBancaria(String entidad) {
 		this.entidad = entidad;
 	}
+
+
 
 
 }

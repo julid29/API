@@ -6,16 +6,27 @@ import Persistencia.AdminPersistenciaMedioDePago;
 
 public class Tarjeta extends MedioDePago {
 	private int nroTarj;
-	private Date fecha;
+	private Date vencim;
 	
-	public Tarjeta(String entidad, int nroTarj, Date fecha) {
+	public Tarjeta() {
+		super(null);
+		this.nroTarj = 0;
+		this.vencim = null;
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Tarjeta(String entidad, int nroTarj, Date vencim) {
 		super(entidad);
 		this.nroTarj = nroTarj;
-		this.fecha = fecha;
+		this.vencim = vencim;
 		// TODO Auto-generated constructor stub
 		AdminPersistenciaMedioDePago.getInstancia().insertarTarjeta(this);
 	}
 
+	public MedioDePago buscarMedioDePago(String entidad,int nroTarj){
+		return AdminPersistenciaMedioDePago.getInstancia().buscarTarjeta(entidad, nroTarj);
+	}
+	
 	public boolean sosMedioDePago(String entidad, int nroTarj) {
 		if(this.entidad.equals(entidad) && this.nroTarj==nroTarj)
 			return true;
@@ -32,12 +43,12 @@ public class Tarjeta extends MedioDePago {
 		this.nroTarj = nroTarj;
 	}
 
-	public Date getFecha() {
-		return fecha;
+	public Date getVencim() {
+		return vencim;
 	}
 
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setVencim(Date vencim) {
+		this.vencim = vencim;
 	}
 	
 	
