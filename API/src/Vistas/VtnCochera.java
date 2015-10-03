@@ -11,6 +11,8 @@ import javax.swing.JMenu;
 import javax.swing.JButton;
 
 import Controlador.SistemaCochera;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VtnCochera extends JFrame {
 	private SistemaCochera controlador;
@@ -36,6 +38,11 @@ public class VtnCochera extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnCrearCochera = new JButton("Crear Cochera");
+		btnCrearCochera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		btnCrearCochera.setBounds(127, 37, 179, 36);
 		contentPane.add(btnCrearCochera);
 	}
