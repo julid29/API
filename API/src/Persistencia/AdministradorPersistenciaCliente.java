@@ -20,9 +20,10 @@ public class AdministradorPersistenciaCliente {
 		return pool;
 	}
 	
-	public boolean verificarExistenciaCliente(int cod){
+	public Cliente verificarExistenciaCliente(int cod){
 		Connection con = PoolConnection.getPoolConnection().getConnection();
 		try{
+			Cliente c = null;
 			String senten = "Select dni from clientes where dni=?" ;
 			PreparedStatement ps = null;
 			ps = con.prepareStatement(senten);
@@ -30,15 +31,20 @@ public class AdministradorPersistenciaCliente {
 			ps.execute();
 			
 			ResultSet result = ps.executeQuery();
-			if(result.wasNull()){
-				PoolConnection.getPoolConnection().closeConnections();
-				return true;
+			while(result.next()){
+				c = new Cliente();
+				c.setNombre(result.getString("nombre"));
+				c.setDomicilio(result.getString("domicilio"));
+				c.setTelefono(result.getString("telefono"));
+				c.setDni(result.getString(result.getString("dni")));
+				c.setMail(result.getString("mail"));
+				c.setCodigo(Integer.parseInt(result.getString(result.getString("codigo"))));
 			}
 			PoolConnection.getPoolConnection().closeConnections();
-			return false;
+			return c;
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 }

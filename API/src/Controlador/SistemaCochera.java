@@ -1,7 +1,9 @@
 package Controlador;
 
 import java.util.*;
+
 import Negocio.*;
+import Persistencia.AdministradorPersistenciaCliente;
 
 public class SistemaCochera {
 	private Vector<Cochera> cocheras;
@@ -34,7 +36,12 @@ public class SistemaCochera {
 				return clientes.elementAt(i);
 			}
 		}
-		return null;
+		Cliente c =AdministradorPersistenciaCliente.getInstancia().verificarExistenciaCliente(cod);	
+		if(c == null){
+			return null;
+		}else{
+			return c;
+		}
 	}
 	
 	
