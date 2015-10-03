@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 /**
@@ -24,7 +26,7 @@ import javax.swing.JMenuItem;
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
 public class VtnPrincipal extends JFrame {
-
+	
 	{
 		//Set Look & Feel
 		try {
@@ -56,9 +58,13 @@ public class VtnPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VtnPrincipal() {
-		setLayout(null);
+	public VtnPrincipal(){
+		initGUI();
 		
+	}
+	
+	private void initGUI() {
+		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBounds(0, 0, 631, 414);
 		this.setFont(new java.awt.Font("Calibri",0,10));
@@ -95,6 +101,11 @@ public class VtnPrincipal extends JFrame {
 		menuBar.add(mnCocheras);
 		
 		JMenuItem mntmCrearCochera = new JMenuItem("Crear Cochera");
+		mntmCrearCochera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
 		mnCocheras.add(mntmCrearCochera);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
