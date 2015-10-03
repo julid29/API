@@ -1,5 +1,100 @@
 package Negocio;
 
-public class Cliente {
+import java.util.Vector;
 
+public class Cliente {
+	private String dni;
+	private String domicilio;
+	private String nombre;
+	private String telefono;
+	private String mail;
+	private Vector<MedioDePago> Medios;
+	private int codigo;
+	
+	private static int cod;
+	
+	public Cliente(String dni,String dom,String nom,String tel,String mail){
+		this.dni = dni;
+		Medios = new Vector<MedioDePago>();
+		domicilio = dom;
+		nombre = nom;
+		telefono = tel;
+		this.mail = mail;
+		codigo = obtenerCod();
+	}
+
+	private static int obtenerCod(){
+		return ++cod;
+	}
+	
+	public boolean SosCliente(String doc){
+		return dni.equals(doc);
+	}
+	
+	public boolean SosCliente(int cod){
+		return codigo == cod;
+	}
+
+	public void ModificarCliente(String dom,String nom,String tel,String mail)
+	{
+		this.setDomicilio(dom);
+		this.setNombre(nom);
+		this.setTelefono(tel);
+		this.setMail(mail);
+		
+		//aca se tiene que llamar al mapper y modificarlo en la base
+	}
+	
+	
+	//gets
+	public String getDni() {
+		return dni;
+	}
+	public String getDomicilio() {
+		return domicilio;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public String getMail() {
+		return mail;
+	}
+	public Vector<MedioDePago> getMedios() {
+		return Medios;
+	}
+	public int getCodigo() {
+		return codigo;
+	}
+	public static int getCod() {
+		return cod;
+	}
+	
+	//sets
+	private void setDni(String dni) {
+		this.dni = dni;
+	}
+	private void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
+	}
+	private void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	private void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	private void setMail(String mail) {
+		this.mail = mail;
+	}
+	private void setMedios(Vector<MedioDePago> medios) {
+		Medios = medios;
+	}
+	private void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	private static void setCod(int cod) {
+		Cliente.cod = cod;
+	}
 }
