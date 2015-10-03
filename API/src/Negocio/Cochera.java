@@ -1,5 +1,7 @@
 package Negocio;
 
+import Persistencia.AdministradorPersistenciaCochera;
+
 public class Cochera {
 	private String numero;
 	private boolean estado; //falso = disponible
@@ -10,6 +12,7 @@ public class Cochera {
 	public Cochera(){
 		numero = String.valueOf(obtenerPiso())+"-"+String.valueOf(obtenerNro());
 		estado = false;
+		AdministradorPersistenciaCochera.getInstancia().insert(this);
 	}
 	
 	private static int obtenerNro(){
