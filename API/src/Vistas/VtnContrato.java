@@ -41,13 +41,17 @@ public class VtnContrato extends JFrame {
 			contentPane.setLayout(null);
 		
 			JButton btnIngresarCliente = new JButton("Ingresar Cliente");
+			btnIngresarCliente.setBounds(256, 192, 137, 37);
+			contentPane.add(btnIngresarCliente);
 			btnIngresarCliente.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					controlador.IngresarCliente(Integer.parseInt(textField1.getText()));
+					lblCodigoDeCliente.setVisible(false);
+					textField1.setVisible(false);
+					btnIngresarCliente.setVisible(false);
 				}
 			});
-			btnIngresarCliente.setBounds(256, 192, 137, 37);
-			contentPane.add(btnIngresarCliente);
+			
 			
 			JLabel lblCodigoDeCliente = new JLabel("Codigo de Cliente");
 			lblCodigoDeCliente.setBounds(44, 34, 91, 28);
