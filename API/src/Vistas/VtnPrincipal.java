@@ -29,14 +29,14 @@ public class VtnPrincipal extends JFrame {
 	private JMenuItem mntmCrearCochera;
 	
 	private SistemaCochera controlador;
-	{
+	/*{
 		//Set Look & Feel
 		try {
 			javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 
 	private JPanel contentPane;
