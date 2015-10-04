@@ -22,6 +22,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@SuppressWarnings("serial")
 public class VtnAltaTarjeta extends JFrame {
 
 	private SistemaCochera controlador;
