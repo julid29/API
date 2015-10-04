@@ -103,6 +103,12 @@ public class VtnPrincipal extends JFrame {
 			menuBar.add(mnMediosDePago);
 		
 			JMenuItem mntmNuevoMedioDe = new JMenuItem("Nuevo Medio de Pago");
+			mntmNuevoMedioDe.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					VtnAltaTarjeta altaTarjeta = new VtnAltaTarjeta(controlador);
+					altaTarjeta.setVisible(true);
+				}
+			});
 			mnMediosDePago.add(mntmNuevoMedioDe);
 		
 			JMenu mnCocheras = new JMenu("Cocheras");
