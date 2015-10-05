@@ -2,6 +2,8 @@ package Negocio;
 
 import java.util.Vector;
 
+import Persistencia.AdministradorPersistenciaCliente;
+
 public class Cliente {
 	private String dni;
 	private String domicilio;
@@ -25,6 +27,8 @@ public class Cliente {
 		telefono = tel;
 		this.mail = mail;
 		codigo = obtenerCod();
+		
+		AdministradorPersistenciaCliente.getInstancia().insert(this);
 	}
 
 	private static int obtenerCod(){
@@ -39,14 +43,14 @@ public class Cliente {
 		return codigo == cod;
 	}
 
-	public void ModificarCliente(String dom,String nom,String tel,String mail)
+	public void ModificarCliente(String dom,String tel,String mail)
 	{
 		this.setDomicilio(dom);
-		this.setNombre(nom);
 		this.setTelefono(tel);
 		this.setMail(mail);
 		
 		//aca se tiene que llamar al mapper y modificarlo en la base
+		AdministradorPersistenciaCliente.getInstancia().update(this);
 	}
 	
 	

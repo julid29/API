@@ -29,10 +29,10 @@ public class AdministradorPersistenciaCliente {
 		try
 		{
 			//Preparar sentencia insert en tabla destino
-			String senten = "INSERT INTO cliente (codigo, dni, nombre, telefono, domicilio, mail) VALUES (?,?,?,?,?,?)" ;
+			String senten = "INSERT INTO cliente (idCliente, dni, nombre, telefono, domicilio, mail) VALUES (?,?,?,?,?,?)" ;
 			PreparedStatement ps = null;
 			ps = con.prepareStatement(senten);
-			ps.setString(1,String.valueOf(c.getCodigo()));
+			ps.setInt(1,c.getCodigo());
 			ps.setString(2,c.getDni());
 			ps.setString(3,c.getNombre());
 			ps.setString(4,c.getTelefono());
@@ -60,14 +60,13 @@ public class AdministradorPersistenciaCliente {
 		try
 		{
 			//Preparar sentencia insert en tabla destino
-			String senten = "UPDATE cliente set nombre = ? ,domicilio = ? ,telefono = ?,mail = ? where dni = ?" ;
+			String senten = "UPDATE cliente set domicilio = ? ,telefono = ?,mail = ? where dni = ?" ;
 			PreparedStatement ps = null;
 			ps = con.prepareStatement(senten);
-			ps.setString(1,c.getNombre());
-			ps.setString(2,c.getDomicilio());
-			ps.setString(3,c.getTelefono());
-			ps.setString(4, c.getMail());
-			ps.setString(5,c.getDni());
+			ps.setString(1,c.getDomicilio());
+			ps.setString(2,c.getTelefono());
+			ps.setString(3,c.getMail());
+			ps.setString(4,c.getDni());
 			
 			ps.execute();
 			
@@ -112,7 +111,7 @@ public class AdministradorPersistenciaCliente {
 		Connection con = PoolConnection.getPoolConnection().getConnection();
 		try{
 			Cliente c = null;
-			String senten = "Select nombre,domicilio,telefono,dni,mail,codigo from cliente where dni=?" ;
+			String senten = "Select nombre,domicilio,telefono,dni,mail from cliente where idCliente=?" ;
 			PreparedStatement ps = null;
 			ps = con.prepareStatement(senten);
 			ps.setString(1,String.valueOf(cod));
@@ -125,9 +124,39 @@ public class AdministradorPersistenciaCliente {
 				c.setNombre(result.getString("nombre"));
 				c.setDomicilio(result.getString("domicilio"));
 				c.setTelefono(result.getString("telefono"));
-				c.setDni(result.getString(result.getString("dni")));
+				c.setDni(result.getString("dni"));
 				c.setMail(result.getString("mail"));
-				c.setCodigo(Integer.parseInt(result.getString("codigo")));
+				c.setCodigo(cod);
+			}
+			
+			PoolConnection.getPoolConnection().closeConnections();
+			return c;
+		}catch(SQLException e){
+			e.printStackTrace();
+			PoolConnection.getPoolConnection().closeConnections();
+		}
+		return null;
+	}
+	public Cliente verificarExistenciaCliente(String dni){
+		Connection con = PoolConnection.getPoolConnection().getConnection();
+		try{
+			Cliente c = null;
+			String senten = "Select nombre,domicilio,telefono,mail,idCliente from cliente where dni=?" ;
+			PreparedStatement ps = null;
+			ps = con.prepareStatement(senten);
+			ps.setString(1,String.valueOf(dni));
+			
+			ps.execute();
+			
+			ResultSet result = ps.executeQuery();
+			while(result.next()){
+				c = new Cliente();
+				c.setNombre(result.getString("nombre"));
+				c.setDni(dni);
+				c.setDomicilio(result.getString("domicilio"));
+				c.setTelefono(result.getString("telefono"));
+				c.setMail(result.getString("mail"));
+				c.setCodigo(result.getInt("idCliente"));
 			}
 			
 			PoolConnection.getPoolConnection().closeConnections();

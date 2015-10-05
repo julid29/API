@@ -23,27 +23,78 @@ public class SistemaCochera {
 		return info;
 	}
 	
-	public void IngresarCliente(int cod){
-		Cliente c = buscarCliente(cod);
-		if(c == null){
-			
+	
+	//cliente
+	public void CrearCliente(String dni,String dom,String nom,String tel,String mail)
+	{
+		Cliente cli = buscarCliente(dni);
+		if(cli == null)
+		{
+			cli = new Cliente(dni, dom, nom, tel, mail);
+			clientes.add(cli);
 		}
 	}
+	public void ModificarCliente(int codigo, String dni,String dom,String tel,String mail)
+	{
+		Cliente cli = buscarCliente(codigo);
+		if(cli != null)
+		{
+			cli.ModificarCliente(dom, tel, mail);
+			
+			//hay que hacer esto, porq los cambios quedan en cli y en la base de datos, pero no en vector
+			for(int i = 0; i < clientes.size(); i++){
+				if(clientes.elementAt(i).SosCliente(dni)){
+					clientes.set(i, cli);
+				}
+			}
+		}
+	}
+	public void EliminarCliente(int codigo)
+	{
+		//verifica q exita cliente
+			//existe
+				//verifica q no tenga contratos asociados
+					//no tiene
+					//elimina los medios de pago
+					//eimina cliente
+				
+	}
 	
+	public void IngresarCliente(int cod){ 
+		Cliente c = buscarCliente(cod); 
+			if(c == null){ 
+			 
+			} 
+	} 
+	private Cliente buscarCliente(String dni){
+		for(int i = 0; i<clientes.size();i++){
+			if(clientes.elementAt(i).SosCliente(dni)){
+				return clientes.elementAt(i);
+			}
+		}
+		
+		Cliente c =AdministradorPersistenciaCliente.getInstancia().verificarExistenciaCliente(dni);	
+		if(c == null)
+			return null;
+		else
+			return c;
+	}
 	private Cliente buscarCliente(int cod){
 		for(int i = 0; i<clientes.size();i++){
 			if(clientes.elementAt(i).SosCliente(cod)){
 				return clientes.elementAt(i);
 			}
 		}
+		
 		Cliente c =AdministradorPersistenciaCliente.getInstancia().verificarExistenciaCliente(cod);	
-		if(c == null){
+		if(c == null)
 			return null;
-		}else{
+		else
 			return c;
-		}
 	}
 	
+	
+	//medios e pago
 	public void crearTarjeta(String entidad, int nroTarj, Date vencim) {
 		Tarjeta tarj = buscarTarjeta(entidad,nroTarj);
 		if(tarj == null){
