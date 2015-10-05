@@ -23,7 +23,7 @@ public class SistemaCochera {
 	
 	
 	//cliente
-	public void CrearCliente(String dni,String dom,String nom,String tel,String mail)
+	public int CrearCliente(String dni,String dom,String nom,String tel,String mail)
 	{
 		Cliente cli = buscarCliente(dni);
 		if(cli == null)
@@ -31,6 +31,7 @@ public class SistemaCochera {
 			cli = new Cliente(dni, dom, nom, tel, mail);
 			clientes.add(cli);
 		}
+		return cli.getCodigo();
 	}
 	public void ModificarCliente(int codigo, String dni,String dom,String tel,String mail)
 	{

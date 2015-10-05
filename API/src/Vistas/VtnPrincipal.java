@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import Controlador.SistemaCochera;
 
@@ -80,9 +81,23 @@ public class VtnPrincipal extends JFrame {
 		
 			JMenuItem mntmNuevoCliente = new JMenuItem("Nuevo Cliente");
 			mnCliente.add(mntmNuevoCliente);
+			mntmNuevoCliente.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					VtnAltaCliente vAltaCliente = new VtnAltaCliente(controlador);
+					vAltaCliente.setVisible(true);
+				}
+			});
 		
 			JMenuItem mntmModificarCliente = new JMenuItem("Modificar Cliente");
 			mnCliente.add(mntmModificarCliente);
+			mntmModificarCliente.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					JOptionPane pedirCod = new JOptionPane();
+					int codigo = Integer.parseInt(pedirCod.showInputDialog("Ingresar Codigo de Cliente"));
+					VtnModificarCliente vModificarCliente = new VtnModificarCliente(controlador,codigo);
+					vModificarCliente.setVisible(true);
+				}
+			});
 		
 			JMenuItem mntmEliminarCliente = new JMenuItem("Eliminar Cliente");
 			mnCliente.add(mntmEliminarCliente);
