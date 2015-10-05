@@ -1,46 +1,32 @@
 package Negocio;
 
 import java.sql.*;
+import Persistencia.AdminPersistenciaCredito;
 
-import Persistencia.AdminPersistenciaMedioDePago;
-
-public class Tarjeta extends Crédito {
-	private int nroTarj;
+public class Tarjeta extends Credito {
 	private Date vencim;
 	
 	public Tarjeta() {
-		super(null);
-		this.nroTarj = 0;
+		super();
 		this.vencim = null;
 		// TODO Auto-generated constructor stub
 	}
 	
 	public Tarjeta(String entidad, int nroTarj, Date vencim) {
-		super(entidad);
-		this.nroTarj = nroTarj;
+		super(entidad, nroTarj);
 		this.vencim = vencim;
 		// TODO Auto-generated constructor stub
-		AdminPersistenciaMedioDePago.getInstancia().insertarTarjeta(this);
+		AdminPersistenciaCredito.getInstancia().insertarTarjeta(this);
 	}
 
-	public MedioDePago buscarMedioDePago(String entidad,int nroTarj){
-		return AdminPersistenciaMedioDePago.getInstancia().buscarTarjeta(entidad, nroTarj);
-	}
-	
-	public boolean sosMedioDePago(String entidad, int nroTarj) {
-		if(this.entidad.equals(entidad) && this.nroTarj==nroTarj)
-			return true;
-		return false;
-	}
-	
-	
+		
 	//getters & setters
 	public int getNroTarj() {
-		return nroTarj;
+		return super.getNro();
 	}
-
-	public void setNroTarjeta(int nroTarj) {
-		this.nroTarj = nroTarj;
+	
+	public String getEntidad() {
+		return super.getEntidad();
 	}
 
 	public Date getVencim() {

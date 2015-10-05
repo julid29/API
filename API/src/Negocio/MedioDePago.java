@@ -4,5 +4,5 @@ public abstract class MedioDePago {
 
 	public MedioDePago() {
 	}
-
+	
 }

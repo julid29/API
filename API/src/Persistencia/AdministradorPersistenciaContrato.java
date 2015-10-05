@@ -49,6 +49,29 @@ public class AdministradorPersistenciaContrato {
 	      
 	}
 
+	public boolean existeVehiculo(String patente){
+		Connection con = PoolConnection.getPoolConnection().getConnection();
+		
+		try
+		{
+			//Preparar sentencia insert en tabla destino
+			String senten = "SELECT * FROM Vehiculo WHERE patente=?" ;
+			PreparedStatement ps = null;
+			ps = con.prepareStatement(senten);
+			ps.setString(1,patente);
+			ResultSet result = ps.executeQuery();
+			if(result==null){
+				return false;
+			}
+		}catch( SQLException e ) 
+	      {
+				System.out.println("Error" + e.getMessage());
+				PoolConnection.getPoolConnection().closeConnections();
+	      }
+		PoolConnection.getPoolConnection().closeConnections();
+		return true;
+	}
+	
 	public Contrato verificarExistenciaContrato(int cod){
 		Connection con = PoolConnection.getPoolConnection().getConnection();
 		try{

@@ -21,6 +21,7 @@ public class VtnContrato extends JFrame {
 	private JTextField textField;
 	private JLabel lblCodigoDeCliente;
 	private JTextField textField1;
+	private JButton btnIngresarCliente;
 
 	/**
 	 * Create the frame.
@@ -41,7 +42,7 @@ public class VtnContrato extends JFrame {
 			setContentPane(contentPane);
 			contentPane.setLayout(null);
 		
-			JButton btnIngresarCliente = new JButton("Ingresar Cliente");
+			btnIngresarCliente = new JButton("Ingresar Cliente");
 			btnIngresarCliente.setBounds(256, 192, 137, 37);
 			contentPane.add(btnIngresarCliente);
 			btnIngresarCliente.addActionListener(new ActionListener() {

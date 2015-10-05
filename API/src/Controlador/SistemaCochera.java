@@ -6,23 +6,19 @@ import Negocio.*;
 import Persistencia.AdministradorPersistenciaCliente;
 
 public class SistemaCochera {
-	private Vector<Cochera> cocheras;
+	private MapaDeCocheras mapaCocheras;
 	private Vector<MedioDePago> mediosDePago;
 	private Vector<Cliente> clientes;
-	private Vector<Vehiculo> vehiculos;
 	
 	public SistemaCochera(){
-		cocheras = new Vector<Cochera>();
+		mapaCocheras = new MapaDeCocheras(); //ver el tema de que se ejecute una sola vez al abrir el programa la primera vez y que traiga TODAS las cocheras a memoria
 		mediosDePago = new Vector<MedioDePago>();
 		clientes = new Vector<Cliente>();
-		vehiculos = new Vector<Vehiculo>();
 	}
 	
-	public String crearCochera(){
-		Cochera cochera = new Cochera();
-		cocheras.add(cochera);
-		String info = cochera.getNumero();
-		return info;
+	//cocheras
+	public void crearCochera(){
+		mapaCocheras.agregarCochera();
 	}
 	
 	
@@ -98,33 +94,19 @@ public class SistemaCochera {
 	
 	//medios e pago
 	public void crearTarjeta(String entidad, int nroTarj, Date vencim) {
-		Tarjeta tarj = buscarTarjeta(entidad,nroTarj);
-		if(tarj == null){
+		Tarjeta tarj = new Tarjeta();
+		if(Credito.existeCredito(nroTarj) == false){
 			tarj = new Tarjeta(entidad,nroTarj,(java.sql.Date) vencim);
 			mediosDePago.add(tarj);
 		}
 	}
-	
 	public void crearCBU(String entidad, int nroCbu) {
-		CBU cbu = buscarCBU(entidad,nroCbu);
-		if(cbu == null)
+		CBU cbu = new CBU();
+		if(Credito.existeCredito(nroCbu) == false)
 			mediosDePago.add(new CBU(entidad,nroCbu));
-	}	
-	
-	public Tarjeta buscarTarjeta(String entidad,int nroTarj)
-	{
-		Tarjeta tarj = new Tarjeta();
-		Tarjeta tarj1= (Tarjeta) tarj.buscarMedioDePago(entidad, nroTarj);
-		mediosDePago.add(tarj1);
-		return tarj1;
 	}
 	
-	public CBU buscarCBU(String entidad,int cbu)
-	{
-		CBU cbu1 = new CBU();
-		CBU cbu2= (CBU) cbu1.buscarMedioDePago(entidad, cbu);
-		mediosDePago.add(cbu2);
-		return cbu2;
-	}
+	//contratos
+
 	
 }

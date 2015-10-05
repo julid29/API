@@ -3,35 +3,47 @@ package Negocio;
 import Persistencia.AdministradorPersistenciaCochera;
 
 public class Cochera {
-	private String numero;
+	private int numero;
+	private int piso;
 	private boolean estado; //falso = disponible
+
 	
-	private static int piso; //ultimo numero de piso
-	private static int ultimoNro; //ultimo numero de cochera
-	
-	public Cochera(){
-		numero = String.valueOf(obtenerPiso())+"-"+String.valueOf(obtenerNro());
-		estado = false;
+	public Cochera()
+	{
+		int ultimoNro = MapaDeCocheras.getUltimaCochera().getNumero();
+		int ultimoPiso = MapaDeCocheras.getUltimaCochera().getPiso();
+		this.estado=false;
+		
+		if(ultimoNro < 10)
+		{
+			this.piso = ultimoPiso;
+			this.numero= ultimoNro+1;
+		}
+		else
+		{
+			this.piso = ultimoPiso+1;
+			this.numero= 1;
+		}
+		
 		AdministradorPersistenciaCochera.getInstancia().insert(this);
 	}
 	
-	private static int obtenerNro(){
-		return ultimoNro++;
-	}
 	
-	private static int obtenerPiso(){
-		if(ultimoNro == 10){
-			piso = piso + 1;
-			ultimoNro = 0;
-		}
-		return piso;
-	}
-
-	public String getNumero() {
-		return numero;
+	public int getNumero() {
+		return this.numero;
 	}
 	
 	public boolean getEstado(){
 		return estado;
+	}
+	
+	public int getPiso(){
+		return this.piso;
+	}
+	
+	public void setEstado(boolean estado)
+	{
+		//va el update de la bd
+		this.estado = estado;
 	}
 }

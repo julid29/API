@@ -1,40 +1,28 @@
 package Negocio;
 
-import Persistencia.AdminPersistenciaMedioDePago;
+import Persistencia.AdminPersistenciaCredito;
 
-public class CBU extends Crédito {
-	private int cbu;
+public class CBU extends Credito {
 	
 	public CBU() {
-		super(null);
-		this.cbu=0;
+		super();
 		// TODO Auto-generated constructor stub
 	}
 	
 	public CBU(String entidad, int cbu) {
-		super(entidad);
-		this.cbu=cbu;
+		super(entidad,cbu);
 		// TODO Auto-generated constructor stub
-		AdminPersistenciaMedioDePago.getInstancia().insertarCBU(this);
+		AdminPersistenciaCredito.getInstancia().insertarCBU(this);
 	}
 
-	public MedioDePago buscarMedioDePago(String entidad,int nroCbu){
-		return AdminPersistenciaMedioDePago.getInstancia().buscarCBU(entidad, nroCbu);
-	}
-	
-	public boolean sosMedioDePago(String entidad, int cbu) {
-		if(this.entidad.equals(entidad) && this.cbu==cbu)
-			return true;
-		return false;
-	}
 	
 	//getters & setters
 	public int getCbu() {
-		return cbu;
+		return super.getNro();
 	}
 
-	public void setCbu(int cbu) {
-		this.cbu = cbu;
+	public String getEntidad() {
+		return super.getEntidad();
 	}
 
 	
