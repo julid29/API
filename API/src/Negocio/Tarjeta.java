@@ -4,7 +4,7 @@ import java.sql.*;
 
 import Persistencia.AdminPersistenciaMedioDePago;
 
-public class Tarjeta extends MedioDePago {
+public class Tarjeta extends Crédito {
 	private int nroTarj;
 	private Date vencim;
 	

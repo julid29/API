@@ -7,13 +7,15 @@ import Persistencia.AdministradorPersistenciaCliente;
 
 public class SistemaCochera {
 	private Vector<Cochera> cocheras;
-	private List<MedioDePago> mediosDePago;
+	private Vector<MedioDePago> mediosDePago;
 	private Vector<Cliente> clientes;
+	private Vector<Vehiculo> vehiculos;
 	
 	public SistemaCochera(){
 		cocheras = new Vector<Cochera>();
-		mediosDePago = new LinkedList<MedioDePago>();
+		mediosDePago = new Vector<MedioDePago>();
 		clientes = new Vector<Cliente>();
+		vehiculos = new Vector<Vehiculo>();
 	}
 	
 	public String crearCochera(){

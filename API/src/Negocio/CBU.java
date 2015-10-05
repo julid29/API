@@ -2,7 +2,7 @@ package Negocio;
 
 import Persistencia.AdminPersistenciaMedioDePago;
 
-public class CBU extends MedioDePago {
+public class CBU extends Crédito {
 	private int cbu;
 	
 	public CBU() {
