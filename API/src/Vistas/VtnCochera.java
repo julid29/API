@@ -32,6 +32,7 @@ public class VtnCochera extends JFrame {
 	private void initGUI() {
 		try{
 			setTitle("Cocheras");
+			//no descomentar
 			//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 450, 300);
 			contentPane = new JPanel();
