@@ -80,6 +80,12 @@ public class VtnPrincipal extends JFrame {
 		
 			JMenuItem mntmNuevoCliente = new JMenuItem("Nuevo Cliente");
 			mnCliente.add(mntmNuevoCliente);
+			mntmNuevoCliente.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					VtnAltaCliente vAltaCliente = new VtnAltaCliente(controlador);
+					vAltaCliente.setVisible(true);
+				}
+			});
 		
 			JMenuItem mntmModificarCliente = new JMenuItem("Modificar Cliente");
 			mnCliente.add(mntmModificarCliente);
